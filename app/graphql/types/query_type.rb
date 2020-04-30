@@ -26,8 +26,21 @@ module Types
       Post.find(id)
     end
 
+    # query {
+    #   all_links {
+    #     id
+    #     url
+    #     description
+    #   }
+    # }
     def posts
       Post.all
+    end
+
+    field :all_links, [Types::LinkType], null: false
+
+    def all_links
+      Link.all
     end
   end
 end
