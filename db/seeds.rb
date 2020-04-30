@@ -13,4 +13,9 @@
     title: Faker::Beer.brand,
     rating: rand(5)
   )
+
+  Link.create(
+    url: 'http://www.example.com',
+    description: Faker::Food.description
+  )
 end
