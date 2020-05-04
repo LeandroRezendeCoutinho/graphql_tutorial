@@ -2,10 +2,6 @@
 
 module Mutations
   class CreateLink < BaseMutation
-    # # arguments passed to the `resolve` method
-    # argument :description, String, required: true
-    # argument :url, String, required: true
-
     argument :input, Types::CreateLinkInput, required: true
 
     # return type from the mutation
@@ -16,6 +12,10 @@ module Mutations
         description: input.description,
         url: input.url
       )
+    rescue ActiveRecord::RecordInvalid => e
+      {
+        errors: e.message
+      }
     end
   end
 end
