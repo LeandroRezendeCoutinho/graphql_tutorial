@@ -37,6 +37,12 @@ module Types
       Post.all
     end
 
+    # field :comments, [Types::CommentType], null: false
+
+    # def comments(post_id:)
+    #   Comment.where(post_id: post_id)
+    # end
+
     field :all_links, [Types::LinkType], null: false
 
     def all_links

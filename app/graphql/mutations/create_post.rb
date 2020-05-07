@@ -7,10 +7,14 @@ module Mutations
     type Types::PostType
 
     def resolve(input:)
+      comments = []
+      if input.comments
+        comments = input.comments.map { |comment| Comment.new(body: comment) }
+      end
       Post.create!(
         title: input.title,
-        rating: input.rating
-        # comments: [input.comment]
+        rating: input.rating,
+        comments: comments
       )
     rescue ActiveRecord::RecordInvalid => e
       {

@@ -4,6 +4,6 @@ module Types
   class CreatePostInput < Types::BaseInputObject
     argument :title, String, required: true
     argument :rating, Integer, required: true
-    # argument :comments, [Types::CommentType], required: false
+    argument :comments, [String], required: false
   end
 end

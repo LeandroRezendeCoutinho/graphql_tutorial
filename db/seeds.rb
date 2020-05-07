@@ -9,9 +9,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 100.times do
+  comments = []
+  5.times do
+    comments << Comment.new(body: Faker::GreekPhilosophers.quote)
+  end
   Post.create(
     title: Faker::Beer.brand,
-    rating: rand(5)
+    rating: rand(5),
+    comments: comments
   )
 
   Link.create(
