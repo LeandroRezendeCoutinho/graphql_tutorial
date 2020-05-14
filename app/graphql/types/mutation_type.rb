@@ -27,6 +27,8 @@ module Types
     # }
     field :create_post, mutation: Mutations::CreatePost
 
+    field :update_post, mutation: Mutations::UpdatePost
+
     field :create_comment, mutation: Mutations::CreateComment
   end
 end

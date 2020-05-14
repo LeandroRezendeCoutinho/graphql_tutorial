@@ -13,6 +13,10 @@ module Types
       argument :id, ID, required: true
     end
 
+    def post(id:)
+      Post.find(id)
+    end
+
     # query {
     #   posts {
     #     id
@@ -22,10 +26,6 @@ module Types
     # }
     field :posts, [Types::PostType], null: false
 
-    def post(id:)
-      Post.find(id)
-    end
-
     # query {
     #   all_links {
     #     id
@@ -34,7 +34,7 @@ module Types
     #   }
     # }
     def posts
-      Post.all
+      Post.includes(:comments).all
     end
 
     # field :comments, [Types::CommentType], null: false
