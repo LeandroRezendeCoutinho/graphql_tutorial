@@ -9,7 +9,7 @@ module Types
     #     rating
     #   }
     # }
-    field :post, Types::PostType, null: true do
+    field :post, Types::Posts::PostType, null: true do
       argument :id, ID, required: true
     end
 
@@ -24,7 +24,7 @@ module Types
     #     rating
     #   }
     # }
-    field :posts, [Types::PostType], null: false
+    field :posts, [Types::Posts::PostType], null: false
 
     # query {
     #   all_links {
@@ -37,13 +37,13 @@ module Types
       Post.includes(:comments).all
     end
 
-    # field :comments, [Types::CommentType], null: false
+    # field :comments, [Types::Comments::CommentType], null: false
 
     # def comments(post_id:)
     #   Comment.where(post_id: post_id)
     # end
 
-    field :all_links, [Types::LinkType], null: false
+    field :all_links, [Types::Links::LinkType], null: false
 
     def all_links
       Link.all

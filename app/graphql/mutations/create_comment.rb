@@ -2,9 +2,9 @@
 
 module Mutations
   class CreateComment < BaseMutation
-    argument :input, Types::CreateCommentInput, required: true
+    argument :input, Types::Comments::CreateCommentInput, required: true
 
-    type Types::CommentType
+    type Types::Comments::CommentType
 
     def resolve(input:)
       Comment.create!(

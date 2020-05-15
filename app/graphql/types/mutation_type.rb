@@ -2,7 +2,17 @@
 
 module Types
   class MutationType < Types::BaseObject
-    field :create_link, mutation: Mutations::CreateLink
+    # mutation{
+    #   createLink(input: {
+    #     url: "http://www.example.com",
+    #     description: "Mussum Ipsum, cacilds vidis litro abertis."})
+    #   {
+    #     id
+    #     url
+    #     description
+    #   }
+    # }
+    field :create_link, mutation: Mutations::Links::CreateLink
 
     # mutation{
     #   createPost(input: {title: "Some title", rating: 10 })
@@ -25,9 +35,9 @@ module Types
     #     }
     #   }
     # }
-    field :create_post, mutation: Mutations::CreatePost
+    field :create_post, mutation: Mutations::Posts::CreatePost
 
-    field :update_post, mutation: Mutations::UpdatePost
+    field :update_post, mutation: Mutations::Posts::UpdatePost
 
     field :create_comment, mutation: Mutations::CreateComment
   end
