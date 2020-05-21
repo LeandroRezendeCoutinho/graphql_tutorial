@@ -24,6 +24,19 @@ module Types
     #     rating
     #   }
     # }
+    #
+    # query{
+    #   posts{
+    #     id
+    #     rating
+    #     title
+    #     comments {
+    #       id
+    #       body
+    #     }
+    #   }
+    # }
+
     field :posts, [Types::Posts::PostType], null: false
 
     # query {
@@ -47,6 +60,28 @@ module Types
 
     def all_links
       Link.all
+    end
+
+    field :users, [Types::Users::UserType], null: false
+    User = Struct.new(:name, :email)
+
+    # query{
+    #   users{
+    #     name
+    #     email
+    #   }
+    # }
+    def users
+      users = []
+
+      10.times do
+        user = User.new
+        user.name = 'Usuário'
+        user.email = 'email@email.com'
+        users << user
+      end
+
+      users
     end
   end
 end
